@@ -1,6 +1,6 @@
 name: Greet Everyone on Dispatch
 on:
-  workflow_dispatch:
+  repository_dispatch:
     types: release
 
 jobs:
