@@ -1,5 +1,7 @@
 name: Greet Everyone on Dispatch
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    types: release
 
 jobs:
   build:
