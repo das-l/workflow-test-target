@@ -1,17 +1,22 @@
-name: Greet Everyone on Dispatch
+name: Update foo
 on:
   repository_dispatch:
     types: release
 
 jobs:
-  build:
-    name: Greeting
+  updateFoo:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
+      - uses: actions/checkout@v2
         with:
-          who-to-greet: 'The Dispatcher'
-        id: hello
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+          fetch-depth: 0
+      - name: Update foo file
+        run: |
+          echo `date +%s` > foo
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update foo
+          title: Update foo
+          body: Add current timestamp to foo file
+          branch: update-foo
