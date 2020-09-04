@@ -12,7 +12,7 @@ jobs:
           fetch-depth: 0
       - name: Update foo file
         run: |
-          echo `date +%s` > foo
+          wget https://raw.githubusercontent.com/das-l/workflow-test-src/master/foo
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
