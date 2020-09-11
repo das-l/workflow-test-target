@@ -12,7 +12,9 @@ jobs:
           fetch-depth: 0
       - name: Update foo file
         run: |
-          curl https://raw.githubusercontent.com/das-l/workflow-test-src/master/foo > foo
+          git clone https://github.com/das-l/workflow-test-src.git
+          cp -a workflow-test-src/foo foo
+          rm -rf workflow-test-src
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
