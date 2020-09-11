@@ -13,10 +13,8 @@ jobs:
       - name: Update foo file
         run: |
           curl https://raw.githubusercontent.com/das-l/workflow-test-src/master/foo > foo
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: Update foo
-          title: Update foo
-          body: Add current timestamp to foo file
-          branch: update-foo
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update foo"
+          git push
