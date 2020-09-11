@@ -17,5 +17,5 @@ jobs:
           rm -rf workflow-test-src
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git diff --quiet && git diff --staged --quiet || git commit -am 'Update foo'
+          git diff --quiet && git diff --staged --quiet || git commit -am "Update ${{ github.event.client_payload.ref }}"
           git push
